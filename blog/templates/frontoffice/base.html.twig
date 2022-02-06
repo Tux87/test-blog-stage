@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+
+<body>
+    {{ include('frontoffice/main/_partials/header.html.twig') }}
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+    {{ include('frontoffice/main/_partials/footer.html.twig') }}
+<body>
+</body>
+</html>

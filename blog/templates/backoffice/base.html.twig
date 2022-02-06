@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>Backoffice{% block title %}{% endblock %}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">        
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <script 
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+		<script 
+            src="https://cdn.jsdelivr.net/npm/semantic-ui-react/dist/umd/semantic-ui-react.min.js">
+        </script>
+        <link rel="icon" href="/favicon.ico">
+        <script defer src="/js/main.8d966f101ad0606f322f.js"></script>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+    
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            {# <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #F1DED4;"> #}
+                <div class="container-fluid">                
+                    <a class="navbar-brand" href="{{ url('backoffice_browse') }}">Backoffice</a>                
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav justify-content-end navbar-nav me-auto mb-2 mb-lg-0">
+                            {% if 'login' != app.request.get('_route') %}
+                                <li class="nav-item">
+                                {% if (is_granted('ROLE_ADMIN')) %}   
+                                    <a 
+                                    {% if app.request.get('_route') starts with 'backoffice_browse' %}
+                                        class="nav-link active" aria-current="page" href="{{ url('backoffice_browse') }}"
+                                    {% else %}
+                                        class="nav-link"  href="{{ url('backoffice_homepage') }}"
+                                    {% endif %}
+                                        >Accueil
+                                    </a>
+                                </li>
+                                {% endif %}
+
+                                {# {% if (is_granted('ROLE_USER')) %}                                
+                                    <li class="nav-item">                                    
+                                        <a class="nav-link" href="{{ url('app_logout') }}">Déconnexion</a>
+                                {% else %}
+                                        <a class="nav-link" href="{{ url('login') }}">Connexion</a>
+                                {% endif %}
+                                    </li> #}
+                                    
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    <main class="mt-4">
+        {% block body %}{% endblock %}
+    </main>
+    </body>
+</html>
+
+
+
+
+

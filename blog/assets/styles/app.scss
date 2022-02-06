@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import 'shared/variables';
+
+
+body header  {    
+    margin: 1% 20% 0% 20%;
+}
+
+body {
+    background-color: $backgroundColour;
+    min-height: 99vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    width: 70%;
+}
+
+main h1 {
+    color: $textColour;
+    font-weight: 500;
+}
+
+main h2 {
+    color: $textColour;
+    font-weight: 500;
+}
+
+main .card {
+    border: 10px red;
+}
+
+footer {
+    background-color: $footerColour;
+    width: 100%;
+    margin: auto 0px 0px 0px;
+    height: 18vh;
+    padding: 0px;
+}
+
+footer .images {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;    
+}
+

@@ -1,0 +1,60 @@
+{% extends 'backoffice/base.html.twig' %}
+
+{% block title %}
+    {% if page == 'edit' %}
+        {{ article.title }}        
+    {% else %}
+        Ajouter un Article
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div>
+        <a href="{{ url('backoffice_browse') }}" class="btn btn-primary" alt="List" title="List">
+        Retour
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+            </svg>
+        </a>
+    </div>
+<h1> 
+    {% if page == 'edit' %}
+        Mettre a jour {{ article.title }}
+    {% else %}
+        Ajouter un Article
+    {% endif %}
+</h1>
+<div class="text-end">
+</div>
+
+{{ form_start(article_form) }}
+
+<div class="card col-9 my-1 bg-white flex-wrap">
+    <div class="card col-12 bg-white border-0">
+        <div class="d-flex flex-row">
+            <div class="card-footer d-flex justify-content-between flex-row col-12 border-0">
+                <div>{{ form_row(article_form.title) }}</div>
+                <div>{{ form_row(article_form.content) }}</div>
+                <div>{{ form_row(article_form.cover) }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {{ form_errors(article_form) }}    
+
+    <button type="submit" class="btn btn-primary mt-4">
+    {% if 'backoffice_add' == app.request.get('_route') %}
+    Creer
+    {% else %}
+    Mettre a jour
+    {% endif %}
+    </button>
+
+{{ form_end(article_form) }} 
+
+</div>
+{% endblock %}
